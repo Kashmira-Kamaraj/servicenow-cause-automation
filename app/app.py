@@ -148,7 +148,9 @@ if st.button("Generate / Correct Cause (Single Ticket)"):
             tickets_df["ticket_number"] == selected_ticket,
             "existing_cause"
         ] = cause
-        tickets_df.to_excel("../data/tickets.xlsx", index=False)
+        #tickets_df.to_excel("../data/tickets.xlsx", index=False)
+        st.warning("Excel write skipped (cloud mode)")
+
 
         st.success("Cause updated successfully")
         st.code(cause)
@@ -185,9 +187,12 @@ if st.button("Process All Eligible Tickets"):
         else:
             skipped += 1
 
-    tickets_df.to_excel("../data/tickets.xlsx", index=False)
+    #tickets_df.to_excel("../data/tickets.xlsx", index=False)
+    st.warning("Excel write skipped (cloud mode)")
+
 
     st.success("Bulk processing completed")
     st.write(f"Tickets processed: {processed}")
     st.write(f"Tickets skipped: {skipped}")
     st.write(f"Tickets using AI fallback: {ai_used}")
+
